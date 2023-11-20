@@ -8,6 +8,7 @@ import 'package:test_arcetec/main.dart';
 import 'package:test_arcetec/presentation/routes/routes.dart';
 import 'package:test_arcetec/presentation/widgets/custom_text_form_field_widget.dart';
 import 'package:test_arcetec/presentation/widgets/outline_button_widget.dart';
+import 'package:test_arcetec/presentation/widgets/snackbar_widget.dart';
 
 class EditProductScreen extends StatefulWidget {
   final Map<String, dynamic> product;
@@ -117,8 +118,23 @@ class _EditProductScreenState extends State<EditProductScreen> {
 													),
 													TextButton(
 														onPressed: () async {
-															await supabase.from('products').delete().match(<String, dynamic>{ 'id': widget.product['id']});
-															Navigator.pushNamed(context, MainRoutes.home);
+															try {
+															  await supabase
+																		.from('products')
+																		.delete()
+																		.match(<String, dynamic>{
+																	'id': widget.product['id']
+																});
+																await Navigator.pushNamed(context, MainRoutes.home);
+																ReusableSnackBar.show(
+																	context: context,
+																	message: 'Producto eliminado con exito!'
+																);
+															} catch (e) {
+															  if (kDebugMode) {
+															    print('Error al eliminar el producto, error: $e');
+															  }
+															}
 														},
 														child: Text('Eliminar', style: ArcetecTypography.caption(
 															color: ArcetecColors.tertiaryColor
@@ -140,21 +156,30 @@ class _EditProductScreenState extends State<EditProductScreen> {
                     final String description = descriptionController.text;
                     final dynamic price = priceController.text;
 
-                    if (name.isNotEmpty || description.isNotEmpty || price.isNotEmpty) {
-                      await Supabase.instance.client.from('products').upsert(<Map<String, dynamic>>[
-                        <String, dynamic>{
-                          'id': widget.product['id'],
-                          'name': name,
-                          'description': description,
-                          'price': double.parse(price),
-                          'image': widget.product['image']
-                        }
-                      ]);
-											await Navigator.pushNamed(context, MainRoutes.home);
-                    } else {
-                      if (kDebugMode) {
-                        print('Error with the data is null');
-                      }
+                    try {
+                      if (name.isNotEmpty || description.isNotEmpty || price.isNotEmpty) {
+												await Supabase.instance.client.from('products').upsert(<Map<String, dynamic>>[
+													<String, dynamic>{
+														'id': widget.product['id'],
+														'name': name,
+														'description': description,
+														'price': double.parse(price),
+														'image': widget.product['image']
+													}
+												]);
+												await Navigator.pushNamed(context, MainRoutes.home);
+												ReusableSnackBar.show(
+													context: context, message: 'Producto editado con exito!'
+												);
+											} else {
+												if (kDebugMode) {
+													print('Error with the data is null');
+												}
+											}
+                    } catch (e) {
+											if (kDebugMode) {
+											  print('Error al actualizar el producto');
+											}
                     }
                   } catch (e) {
                     if (kDebugMode) {

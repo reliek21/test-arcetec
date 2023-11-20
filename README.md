@@ -1,17 +1,31 @@
-# test_arcetec
+# Prueba de Arcetec Flutter
 
-A new Flutter project.
+### Funcionalidades:
+- Registro de datos
+- Edición de datos
+- Eliminación de datos
+- Previsualización de datos
+- Persistencia de datos
 
-## Getting Started
+### Preview de la app funcionando:
+[Link de la Preview de la app funcionando](https://qbhccdkxxpffxjlhxhas.supabase.co/storage/v1/object/public/example_app/arcetec_preview_test.mp4)
 
-This project is a starting point for a Flutter application.
+### Imagenes
 
-A few resources to get you started if this is your first Flutter project:
+Diseño en Mockup:
+![Screen](https://qbhccdkxxpffxjlhxhas.supabase.co/storage/v1/object/public/example_app/exacalidraw-arcetec.png)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Esquema de la base de datos:
+![Screen](https://qbhccdkxxpffxjlhxhas.supabase.co/storage/v1/object/public/example_app/product_db_schema.png)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
 
+## Installation
+1. Clonar el repositorio con **SSH**: `git@github.com:reliek21/test_arcetec.git`
+2. Ingresar al repositorio: `cd test_arcetec`
+3. Correr `flutter pub get` para instalar las dependencias
+4. Correr `flutter run` para compilar la app
+
+
+## Tech Stack
+**Client**: Dart & Flutter
+**Service**: Supabase

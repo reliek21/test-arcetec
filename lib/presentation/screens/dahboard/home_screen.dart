@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:test_arcetec/common/colors/colors_common.dart';
 import 'package:test_arcetec/domain/entities/product_entity.dart';
-import 'package:test_arcetec/presentation/screens/edit_product_screen.dart';
+import 'package:test_arcetec/presentation/screens/dahboard/edit_product_screen.dart';
 import 'package:test_arcetec/presentation/widgets/dashboard_widget.dart';
 import 'package:test_arcetec/presentation/widgets/product_card_widget.dart';
+import 'package:test_arcetec/utils/currency_format.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -54,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
 													child: ProductCardWidget(
 														name: product['name'],
 														description: product['description'],
-														price: product['price'],
+														price: formatStringNumber(product['price'].toString()),
 														image: product['image']
 													),
 												);

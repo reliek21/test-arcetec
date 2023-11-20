@@ -11,6 +11,7 @@ import 'package:test_arcetec/presentation/routes/routes.dart';
 import 'package:test_arcetec/presentation/widgets/custom_text_form_field_widget.dart';
 import 'package:test_arcetec/presentation/widgets/load_image_widget.dart';
 import 'package:test_arcetec/presentation/widgets/outline_button_widget.dart';
+import 'package:test_arcetec/presentation/widgets/snackbar_widget.dart';
 
 class NewProductScreen extends StatefulWidget {
   const NewProductScreen({super.key});
@@ -70,9 +71,7 @@ class _NewProductScreenState extends State<NewProductScreen> {
           });
 
 					await Navigator.pushNamed(context, MainRoutes.home);
-					ScaffoldMessenger.of(context).showSnackBar(
-						const SnackBar(content: Text('Nuevo producto creado'))
-					);
+					ReusableSnackBar.show(context: context, message: 'Nuevo producto agregado');
         } else {
           await Supabase.instance.client
               .from('products')
@@ -129,12 +128,14 @@ class _NewProductScreenState extends State<NewProductScreen> {
       CustomTextFormFieldWidget(
         hintText: 'Precio del producto',
         controller: priceController,
+				keyboard: TextInputType.number
       ),
       const SizedBox(height: 30.0),
       OutlineButtonWidget(
-          fillButton: true,
-          text: 'Guardar producto',
-          onPressed: () => _saveProduct())
+				fillButton: true,
+				text: 'Guardar producto',
+				onPressed: () => _saveProduct()
+			)
 		];
 	}
 

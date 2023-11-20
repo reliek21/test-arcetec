@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:test_arcetec/presentation/screens/home_screen.dart';
-import 'package:test_arcetec/presentation/screens/login_screen.dart';
-import 'package:test_arcetec/presentation/screens/new_product_screen.dart';
-import 'package:test_arcetec/presentation/screens/splash_screen.dart';
+import 'package:test_arcetec/presentation/screens/dahboard/home_screen.dart';
+import 'package:test_arcetec/presentation/screens/auth/login_screen.dart';
+import 'package:test_arcetec/presentation/screens/dahboard/new_product_screen.dart';
+import 'package:test_arcetec/presentation/screens/auth/splash_screen.dart';
 
 class MainRoutes {
   MainRoutes._();

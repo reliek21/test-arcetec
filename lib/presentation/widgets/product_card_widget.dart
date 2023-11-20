@@ -50,13 +50,23 @@ class ProductCardWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(name, style: ArcetecTypography.title(
-                color: ArcetecColors.primaryColor,
-                fontWeight: FontWeight.w800
-              )),
-              Text(description, style: ArcetecTypography.subTitle(
-                color: ArcetecColors.primaryColor.withOpacity(0.5)
-              )),
+              SizedBox(
+								width: 200.0,
+								child: Text(name, style: ArcetecTypography.title(
+										color: ArcetecColors.primaryColor,
+										fontWeight: FontWeight.w800
+									),
+									overflow: TextOverflow.ellipsis,
+								),
+							),
+              SizedBox(
+								width: 200.0,
+								child: Text(description, style: ArcetecTypography.subTitle(
+										color: ArcetecColors.primaryColor.withOpacity(0.5)
+									),
+									overflow: TextOverflow.ellipsis,
+								),
+							),
               const SizedBox(height: 10.0),
               Text('\$ $price', style: ArcetecTypography.title(
                 color: ArcetecColors.tertiaryColor,

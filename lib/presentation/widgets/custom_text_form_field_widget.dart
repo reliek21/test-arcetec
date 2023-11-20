@@ -9,13 +9,15 @@ class CustomTextFormFieldWidget extends StatelessWidget {
   final TextEditingController controller;
   final String? Function(String?)? validator;
   final TextFieldType fieldType;
+	final TextInputType? keyboard;
 
   const CustomTextFormFieldWidget({
     super.key,
     required this.hintText,
     required this.controller,
     this.validator,
-    this.fieldType = TextFieldType.text
+    this.fieldType = TextFieldType.text,
+		this.keyboard = TextInputType.text
   });
 
   @override
@@ -31,6 +33,7 @@ class CustomTextFormFieldWidget extends StatelessWidget {
       ),
       child: Center(
         child: TextFormField(
+					keyboardType: keyboard,
           minLines: (fieldType != TextFieldType.textArea) ? null : 5,
           maxLines: (fieldType != TextFieldType.textArea) ? null : 5,
           validator: validator,
