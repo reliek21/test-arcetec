@@ -3,14 +3,16 @@ import 'package:test_arcetec/common/colors/colors_common.dart';
 import 'package:test_arcetec/common/typography/typography_common.dart';
 
 class ProductCardWidget extends StatelessWidget {
-  final String title;
+  final String name;
   final String description;
+	final dynamic price;
   final String image;
 
   const ProductCardWidget({
-    super.key, 
-    required this.title, 
-    required this.description, 
+    super.key,
+    required this.name,
+    required this.description,
+		required this.price,
     required this.image
   });
 
@@ -40,15 +42,15 @@ class ProductCardWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text('Nombre del producto', style: ArcetecTypography.title(
+              Text(name, style: ArcetecTypography.title(
                 color: ArcetecColors.primaryColor,
                 fontWeight: FontWeight.w800
               )),
-              Text('Descripción del producto', style: ArcetecTypography.subTitle(
+              Text(description, style: ArcetecTypography.subTitle(
                 color: ArcetecColors.primaryColor.withOpacity(0.5)
               )),
               const SizedBox(height: 10.0),
-              Text('\$10.000', style: ArcetecTypography.title(
+              Text('\$ $price', style: ArcetecTypography.title(
                 color: ArcetecColors.tertiaryColor,
                 fontWeight: FontWeight.w800
               ))

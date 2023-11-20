@@ -1,20 +1,35 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:test_arcetec/common/colors/colors_common.dart';
 import 'package:test_arcetec/common/typography/typography_common.dart';
 import 'package:test_arcetec/presentation/widgets/custom_text_form_field_widget.dart';
 import 'package:test_arcetec/presentation/widgets/load_image_widget.dart';
 import 'package:test_arcetec/presentation/widgets/outline_button_widget.dart';
 
-class EditProductScreen extends StatelessWidget {
+class EditProductScreen extends StatefulWidget {
   const EditProductScreen({super.key});
+
+  @override
+  State<EditProductScreen> createState() => _EditProductScreenState();
+}
+
+class _EditProductScreenState extends State<EditProductScreen> {
+	final TextEditingController nameController = TextEditingController();
+	final TextEditingController descriptionController = TextEditingController();
+	final TextEditingController priceController = TextEditingController();
+
+	@override
+	void dispose() {
+		nameController.dispose();
+		descriptionController.dispose();
+		priceController.dispose();
+		super.dispose();
+	}
 
   @override
   Widget build(BuildContext context) {
     const SizedBox spaceSizeBox = SizedBox(height: 10.0);
-
-    final TextEditingController titleController = TextEditingController();
-    final TextEditingController descriptionController = TextEditingController();
-    final TextEditingController priceController = TextEditingController();
 
     return Scaffold(
       backgroundColor: ArcetecColors.secondaryColor,
@@ -37,7 +52,7 @@ class EditProductScreen extends StatelessWidget {
               const SizedBox(height: 30.0),
               CustomTextFormFieldWidget(
                 hintText: 'Nombre del producto',
-                controller: titleController,
+                controller: nameController,
               ),
               spaceSizeBox,
               CustomTextFormFieldWidget(
@@ -52,7 +67,30 @@ class EditProductScreen extends StatelessWidget {
               const SizedBox(height: 30.0),
               OutlineButtonWidget(
                 text: 'Editar producto',
-                onPressed: () {}
+                onPressed: () async {
+									try {
+										final String name = nameController.text;
+										final String description = descriptionController.text;
+										final dynamic price = priceController.text;
+
+										if(name.isNotEmpty || description.isNotEmpty || price.isNotEmpty ) {
+											await Supabase.instance.client.from('products').insert(<String, Object>{
+												'name': nameController.text,
+												'description': descriptionController.text,
+												'price': double.parse(price),
+												'image': ''
+											});
+										} else {
+											if (kDebugMode) {
+											  print('Error with the data is null');
+											}
+										}
+									} catch (e) {
+										if (kDebugMode) {
+										  print('Error to save the data $e');
+										}
+									}
+								}
               )
             ]),
           )
