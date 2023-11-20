@@ -19,13 +19,13 @@ Esquema de la base de datos:
 ![Screen](https://qbhccdkxxpffxjlhxhas.supabase.co/storage/v1/object/public/example_app/product_db_schema.png)
 
 
-## Installation
+### Instalación
 1. Clonar el repositorio con **SSH**: `git@github.com:reliek21/test_arcetec.git`
 2. Ingresar al repositorio: `cd test_arcetec`
 3. Correr `flutter pub get` para instalar las dependencias
 4. Correr `flutter run` para compilar la app
 
 
-## Tech Stack
+### Tecnologias:
 **Client**: Dart & Flutter
 **Service**: Supabase
