@@ -7,6 +7,8 @@
 - Previsualización de datos
 - Persistencia de datos
 
+[Descargar el APK de la App](https://github.com/reliek21/test_arcetec/releases/download/v1.0/test_app.apk)
+
 ### Preview de la app funcionando:
 [Link de la Preview de la app funcionando](https://qbhccdkxxpffxjlhxhas.supabase.co/storage/v1/object/public/example_app/arcetec_preview_test.mp4)
 
