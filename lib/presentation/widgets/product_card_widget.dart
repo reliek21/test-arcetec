@@ -37,6 +37,14 @@ class ProductCardWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(5.0),
               color: ArcetecColors.primaryColor
             ),
+						child: image.isNotEmpty
+							? Image.network(
+								'https://qbhccdkxxpffxjlhxhas.supabase.co/storage/v1/object/public/products$image',
+								fit: BoxFit.cover,
+								width: 90.0,
+								height: 100.0,
+							)
+							: const Placeholder(),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,

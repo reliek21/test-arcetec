@@ -6,12 +6,14 @@ class OutlineButtonWidget extends StatelessWidget {
   final String text;
   final bool? fillButton;
   final void Function()? onPressed;
+	final Color? color;
 
   const OutlineButtonWidget({
     super.key,
     this.fillButton = false,
     required this.text,
-    required this.onPressed
+    required this.onPressed,
+		this.color = ArcetecColors.tertiaryColor
   });
 
   @override
@@ -22,9 +24,9 @@ class OutlineButtonWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: (fillButton == false)
             ? Colors.transparent
-            : ArcetecColors.tertiaryColor,
+            : color,
         border: (fillButton == false)
-            ? Border.all(color: ArcetecColors.tertiaryColor)
+            ? Border.all(color: color!)
             : null,
         borderRadius: BorderRadius.circular(10.0)
       ),

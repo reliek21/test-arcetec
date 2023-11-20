@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:test_arcetec/common/colors/colors_common.dart';
+import 'package:test_arcetec/domain/entities/product_entity.dart';
+import 'package:test_arcetec/presentation/screens/edit_product_screen.dart';
 import 'package:test_arcetec/presentation/widgets/dashboard_widget.dart';
 import 'package:test_arcetec/presentation/widgets/product_card_widget.dart';
 
@@ -42,12 +44,20 @@ class _HomeScreenState extends State<HomeScreen> {
           						itemCount: products?.length,
           						itemBuilder: (BuildContext context, int index) {
           							final Map<String, dynamic> product = products![index];
-          							return ProductCardWidget(
-          								name: product['name'],
-          								description: product['description'],
-													price: product['price'],
-          								image: product['image']
-          							);
+          							return GestureDetector(
+													onTap: () {
+														Navigator.push(
+															context,
+															MaterialPageRoute<ProductEntity>(builder: (BuildContext context) => EditProductScreen(product: product))
+														);
+													},
+													child: ProductCardWidget(
+														name: product['name'],
+														description: product['description'],
+														price: product['price'],
+														image: product['image']
+													),
+												);
           						},
           					);
           				}

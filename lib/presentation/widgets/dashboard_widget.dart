@@ -25,11 +25,11 @@ class DashboardWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('20 Productos', style: ArcetecTypography.heading(
+            Text('Bienvenidos a Arcetec Store', style: ArcetecTypography.heading(
               fontWeight: FontWeight.bold,
               color: ArcetecColors.primaryColor
             )),
-            Text('Productos agregados', style: ArcetecTypography.subTitle(
+            Text('Agrega un nuevo producto', style: ArcetecTypography.subTitle(
               color: ArcetecColors.primaryColor.withOpacity(0.5)
             )),
             const SizedBox(height: 24.0),

@@ -9,11 +9,14 @@ Future<void> main() async {
 	// Todo: improve this with enviroments variables
 	await Supabase.initialize(
 		url: 'https://qbhccdkxxpffxjlhxhas.supabase.co',
-		anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFiaGNjZGt4eHBmZnhqbGh4aGFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDA0NTA3NDAsImV4cCI6MjAxNjAyNjc0MH0.QeFJ0v00SXOkGCXT3vj1Yo3su5JarA_m84sf5aL56D0'
+		anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFiaGNjZGt4eHBmZnhqbGh4aGFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDA0NTA3NDAsImV4cCI6MjAxNjAyNjc0MH0.QeFJ0v00SXOkGCXT3vj1Yo3su5JarA_m84sf5aL56D0',
+		authFlowType: AuthFlowType.pkce
 	);
 
 	runApp(const MyApp());
 }
+
+final SupabaseClient supabase = Supabase.instance.client;
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
